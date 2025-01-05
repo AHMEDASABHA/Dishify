@@ -1,0 +1,14 @@
+{
+  "HomePage": {
+    "title": "Hello world!"
+  },
+  "Sidebar": {
+    "App": "App",
+    "Home": "Home",
+    "Search": "Search",
+    "Categories": "Categories",
+    "Favorites": "Favorites",
+    "About": "About",
+    "Other": "Other"
+  }
+}

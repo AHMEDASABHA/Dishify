@@ -1,0 +1,14 @@
+{
+  "HomePage": {
+    "title": "Hello world!"
+  },
+  "Sidebar": {
+    "App": "التطبيق",
+    "Home": "الصفحة الرئيسية",
+    "Search": "البحث",
+    "Categories": "التصنيفات",
+    "Favorites": "المفضلة",
+    "About": "عن التطبيق",
+    "Other": "أخرى"
+  }
+}
