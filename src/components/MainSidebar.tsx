@@ -55,7 +55,7 @@ function MainSidebar({ locale }: { locale: string }) {
                   <SidebarMenuButton isActive={item.url === pathname} asChild>
                     <Link href={item.url}>
                       <item.icon />
-                      <span>{t(item.title)}</span>
+                      <span className="text-lg">{t(item.title)}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -72,7 +72,7 @@ function MainSidebar({ locale }: { locale: string }) {
                 <SidebarMenuButton isActive={"/about" === pathname} asChild>
                   <Link href={"/about"}>
                     <User />
-                    <span>{t("About")}</span>
+                    <span className="text-lg">{t("About")}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
