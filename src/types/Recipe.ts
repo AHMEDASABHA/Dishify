@@ -1,10 +1,11 @@
 import type { Ingredient } from "./Ingredient";
-import type { InstructionStep } from "./InstructionStep";
+import type { Instruction } from "./InstructionStep";
 
-interface SingleRecipe {
+interface SingleRecipe extends RecipeResponse {
   id: number;
   title: string;
   summary: string;
+  isFavorite?: boolean;
   image: string;
   servings: number;
   readyInMinutes: number;
@@ -14,12 +15,13 @@ interface SingleRecipe {
   dishTypes: string[];
   cuisines: string[];
   extendedIngredients: Ingredient[];
-  analyzedInstructions: InstructionStep[];
+  analyzedInstructions: Instruction[];
+  similarRecipes: Recipe[];
 }
 export type Recipe = Partial<SingleRecipe>;
 
 export interface RecipeResponse {
   id: number;
   title: string;
-  image: string;
+  image?: string;
 }

@@ -10,6 +10,7 @@ import { cookies } from "next/headers";
 
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import ReactQueryClientProvider from "@/components/ReactQueryClientProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,10 +28,8 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  model,
 }: Readonly<{
   children: React.ReactNode;
-  model: React.ReactNode;
 }>) {
   const cookieStore = await cookies();
   const defaultOpen = cookieStore.get("sidebar:state")?.value === "true";
@@ -52,17 +51,18 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
-            <SidebarProvider defaultOpen={defaultOpen}>
-              <MainSidebar locale={locale} />
-              <SidebarInset>
-                <main>
-                  <Header locale={locale} />
-                  {children}
-                  {model}
-                  <Footer />
-                </main>
-              </SidebarInset>
-            </SidebarProvider>
+            <ReactQueryClientProvider>
+              <SidebarProvider defaultOpen={defaultOpen}>
+                <MainSidebar locale={locale} />
+                <SidebarInset>
+                  <main>
+                    <Header locale={locale} />
+                    {children}
+                    <Footer />
+                  </main>
+                </SidebarInset>
+              </SidebarProvider>
+            </ReactQueryClientProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
