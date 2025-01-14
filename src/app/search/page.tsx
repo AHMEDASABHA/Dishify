@@ -8,13 +8,18 @@ import { useRecipesByIngredients, useRecipesByName } from "@/lib/query";
 import { Filter, Search } from "lucide-react";
 import AllRecipes from "../all-recipes";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useQueryState } from "nuqs";
 
-type FilterType = "byName" | "byIngredient";
+// type FilterType = "byName" | "byIngredient";
 
 function Page() {
-  const [filter, setFilter] = useState<FilterType>("byName");
+  const [filter, setFilter] = useQueryState("filter", {
+    defaultValue: "byName",
+  });
   const [inputValue, setInputValue] = useState<string>(""); // Track input value
-  const [searchQuery, setSearchQuery] = useState<string>(""); // Trigger searches
+  const [searchQuery, setSearchQuery] = useQueryState("query", {
+    defaultValue: "",
+  }); // Trigger searches
 
   const handleSearch = () => {
     const query = inputValue.trim();

@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import MainSidebar from "@/components/MainSidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { cookies } from "next/headers";
 
 import { NextIntlClientProvider } from "next-intl";
@@ -51,18 +52,20 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
-            <ReactQueryClientProvider>
-              <SidebarProvider defaultOpen={defaultOpen}>
-                <MainSidebar locale={locale} />
-                <SidebarInset>
-                  <main>
-                    <Header locale={locale} />
-                    {children}
-                    <Footer />
-                  </main>
-                </SidebarInset>
-              </SidebarProvider>
-            </ReactQueryClientProvider>
+            <NuqsAdapter>
+              <ReactQueryClientProvider>
+                <SidebarProvider defaultOpen={defaultOpen}>
+                  <MainSidebar locale={locale} />
+                  <SidebarInset>
+                    <main>
+                      <Header locale={locale} />
+                      {children}
+                      <Footer />
+                    </main>
+                  </SidebarInset>
+                </SidebarProvider>
+              </ReactQueryClientProvider>
+            </NuqsAdapter>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
